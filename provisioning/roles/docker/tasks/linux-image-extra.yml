@@ -1,0 +1,10 @@
+- name: Get system Uname
+  shell: uname -r
+  ignore_errors: yes
+  register: uname_result
+
+- name: Install linux-image-extra-{{ uname_result.stdout }}
+  apt: name=linux-image-extra-{{ uname_result.stdout }} update_cache=yes
+
+- name: Install linux-image-extra-virtual
+  apt: name=linux-image-extra-virtual update_cache=yes

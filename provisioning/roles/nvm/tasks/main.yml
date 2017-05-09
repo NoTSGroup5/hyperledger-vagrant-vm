@@ -1,8 +1,8 @@
-- name: NVM | nvm | get stats on nvm
+- name: Get stats on nvm
   stat: path="{{ nvm_dest }}"
   register: nvm_stat
 
-- name:  NVM | nvm | create .nvm directory
+- name: Create .nvm directory
   file:
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
@@ -12,12 +12,12 @@
     state: directory
   when: not nvm_stat.stat.exists
 
-- name: NVM | nvm | download nvm script
+- name: Download nvm script
   get_url:
     dest: "{{ nvm_dest }}"
     url: https://raw.githubusercontent.com/creationix/nvm/{{ nvm_version }}/nvm.sh
 
-- name: NVM | permission | update .nvm dir permission
+- name: Update .nvm dir permission
   file:
     path: "{{ nvm_dest }}"
     group: "{{ nvm_user }}"
@@ -26,7 +26,7 @@
     recurse: yes
     state: directory
 
-- name: NVM | nvm | ensure ~/.bashrc exists
+- name: Ensure ~/.bashrc exists
   copy: 
     content: "" 
     dest: "{{ nvm_working_path }}/.bashrc" 

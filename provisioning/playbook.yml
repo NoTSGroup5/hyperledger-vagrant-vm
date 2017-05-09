@@ -3,6 +3,7 @@
   roles:
     - general
     - git
+    - python
     - nodejs
     - nvm
     - docker

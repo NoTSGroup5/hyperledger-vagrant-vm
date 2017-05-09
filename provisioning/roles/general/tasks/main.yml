@@ -1,0 +1,10 @@
+- name: Generate the server locale
+  locale_gen: name={{ locale }} state=present
+
+- name: set locale 
+  lineinfile: dest=/etc/default/locale regexp='^LANG=' line='LANG={{ locale }}'
+
+- name: reload local
+  shell: source /etc/default/locale
+  args:
+    executable: /bin/bash

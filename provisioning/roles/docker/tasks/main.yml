@@ -15,3 +15,8 @@
   apt: name=docker-ce update_cache=yes
 
 - include: linux-image-extra.yml
+
+- name: Adding existing user 'vagrant' to group 'docker'
+  user: name='vagrant'
+        groups=docker
+        append=yes

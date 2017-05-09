@@ -1,0 +1,15 @@
+- name: Get system Uname -m
+  shell: uname -m
+  ignore_errors: yes
+  register: uname_m_result
+
+- name: Get system Uname -s
+  shell: uname -s
+  ignore_errors: yes
+  register: uname_s_result
+
+- name: Download docker Compose
+  get_url:
+    url: 'https://github.com/docker/compose/releases/download/1.12.0/docker-compose-{{ uname_s_result.stdout }}-{{ uname_m_result.stdout }}'
+    dest: /usr/local/bin/docker-compose
+    mode: 0775

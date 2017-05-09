@@ -1,1 +1,7 @@
 locale: en_US.UTF-8
+
+nvm_version: "v0.33.0"
+nvm_node_version: "6.9.5"
+nvm_user: vagrant
+nvm_working_path: "/home/{{ nvm_user }}"
+nvm_dest: "{{ nvm_working_path }}/.nvm"

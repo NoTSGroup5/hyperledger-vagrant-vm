@@ -26,3 +26,5 @@
     - curl
     - build-essential
     - libssl-dev
+
+- include: python.yml

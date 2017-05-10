@@ -2,7 +2,7 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "hyperledger" do |hyperledger|
         # Base template for virtualbox, we use ubuntu 14.04 here
-        hyperledger.vm.box = "ubuntu/trusty64"
+        hyperledger.vm.box = "ubuntu/xenial64"
         # Domain on which our application will respond later on
         hyperledger.vm.hostname  = "hyperledger.dev"
         # IP address will be used by the VM

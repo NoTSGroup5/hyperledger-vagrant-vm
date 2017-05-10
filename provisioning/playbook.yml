@@ -3,8 +3,8 @@
   roles:
     - general
     - git
-    - python
     - nodejs
     - nvm
     - docker
     - docker-compose
+    - composer-cli

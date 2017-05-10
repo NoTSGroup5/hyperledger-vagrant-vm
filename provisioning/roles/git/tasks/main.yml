@@ -1,5 +1,13 @@
-- name: add git ppa
-  apt_repository: repo='ppa:git-core/ppa' state=present
+- name: Add GIT ppa
+  apt_repository: 
+    repo: 'ppa:git-core/ppa'
+    state: present
 
-- name: Install git
-  apt: name=git state=present update_cache=yes
+- name: Install GIT
+  apt: 
+    name: git 
+    state: latest 
+    update_cache: yes
+  become: yes
+  become_user: root
+  become_method: sudo

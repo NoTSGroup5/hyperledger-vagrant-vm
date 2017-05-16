@@ -1,4 +1,5 @@
 Vagrant.configure(2) do |config|
+    provisioner = Vagrant::Util::Platform.windows? ? :guest_ansible : :ansible
 
     config.vm.define "hyperledger" do |hyperledger|
         # Base template for virtualbox, we use ubuntu 14.04 here
@@ -9,7 +10,7 @@ Vagrant.configure(2) do |config|
         hyperledger.vm.network :private_network, ip: "192.168.33.151"
 
         # Tell vagrant to run ansible as a provisioner
-        hyperledger.vm.provision :ansible do |ansible|
+        hyperledger.vm.provision provisioner do |ansible|
             # where the playbook is located
             ansible.playbook = "provisioning/playbook.yml"
         end

@@ -1,0 +1,13 @@
+- name: Git pull HyperLedger
+  git:
+    repo: 'https://github.com/hyperledger/composer-sample-applications-hlfv1.git'
+    dest: '/home/ubuntu/hyperledger'
+  become: true
+  become_user: ubuntu
+
+- name: Install packages based on package.json.
+  npm:
+    path: /home/ubuntu/hyperledger/packages/getting-started
+    state: latest
+  become: true
+  become_user: ubuntu

@@ -14,7 +14,14 @@
 - name: Install Docker
   apt: name=docker-ce update_cache=yes
 
-- name: Adding existing user 'vagrant' to group 'docker'
+- name: Adding existing user '{{ docker_user }}' to group 'docker'
   user: name={{ docker_user }}
         groups=docker
         append=yes
+  register: mandatory_group_list
+
+- name: Force to reconnect when the list of groups has changed
+  shell: 'sleep 1; pkill -u {{ ansible_user }} sshd'
+  async: 3
+  poll: 2
+  when: mandatory_group_list|changed

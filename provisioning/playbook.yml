@@ -8,4 +8,4 @@
     - docker
     - docker-compose
     - composer-cli
-    - hyperledger
+    - proof-of-concept
